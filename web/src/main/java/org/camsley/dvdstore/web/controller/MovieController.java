@@ -2,11 +2,11 @@ package org.camsley.dvdstore.web.controller;
 
 import org.camsley.dvdstore.core.entity.Movie;
 import org.camsley.dvdstore.core.service.MovieService;
+import org.camsley.dvdstore.core.service.impl.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Scanner;
 
@@ -24,12 +24,22 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public String displayMovieCard(@PathVariable("id")Long id, Model model){
 
         model.addAttribute("movie",movieService.getMovieById(id));
         return "movie-details";
     }
+
+    @PostMapping("/movie")
+    public String addMovie(@ModelAttribute Movie movie){
+//        movieService = new MovieServiceImpl();
+            movieService.registerMovie(movie);
+        return "movie-added";
+
+    }
+
+
 
 
 }

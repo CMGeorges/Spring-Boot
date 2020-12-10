@@ -9,11 +9,12 @@ import java.util.List;
 //@Repository
 public class MemoryMovieRepository implements IMovieRepository {
 
-
+    private static long lastNumber =0L;
     private final static List<Movie> movies= new ArrayList<>();
 
     @Override
     public void add(Movie movie){
+        movie.setId(++lastNumber);
         movies.add(movie);
         System.out.println("The movie "+movie.getTitle()+" has been added.");
     }

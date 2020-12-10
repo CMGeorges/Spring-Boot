@@ -4,6 +4,7 @@ import org.camsley.dvdstore.core.entity.Movie;
 import org.camsley.dvdstore.core.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,10 +24,18 @@ public class HomeController {
         this.movieService = movieService;
     }
 
-    @RequestMapping("/dvdstore-home")
+    @GetMapping("/dvdstore-home")
     public @ModelAttribute("movies")List<Movie> displayHome(){
         List<Movie> movies = movieService.getMovieList();
 
         return movies;
     }
+
+    @GetMapping("add-movie-form")
+    public String displayMovieForm(@ModelAttribute Movie movie){
+
+        return "dvdstore-add-movie-form";
+    }
+
+
 }

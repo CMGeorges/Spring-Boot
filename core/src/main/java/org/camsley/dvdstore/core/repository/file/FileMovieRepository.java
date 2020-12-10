@@ -1,7 +1,7 @@
-package org.camsley.dvdstore.repository.file;
+package org.camsley.dvdstore.core.repository.file;
 
-import org.camsley.dvdstore.entity.Movie;
-import org.camsley.dvdstore.repository.IMovieRepository;
+import org.camsley.dvdstore.core.entity.Movie;
+import org.camsley.dvdstore.core.repository.IMovieRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 

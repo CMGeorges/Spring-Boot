@@ -1,6 +1,6 @@
-package org.camsley.dvdstore.repository;
+package org.camsley.dvdstore.core.repository;
 
-import org.camsley.dvdstore.entity.Movie;
+import org.camsley.dvdstore.core.entity.Movie;
 
 import java.util.List;
 

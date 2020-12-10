@@ -1,8 +1,7 @@
-package org.camsley.dvdstore.repository.memory;
+package org.camsley.dvdstore.core.repository.memory;
 
-import org.camsley.dvdstore.entity.Movie;
-import org.camsley.dvdstore.repository.IMovieRepository;
-import org.springframework.stereotype.Repository;
+import org.camsley.dvdstore.core.entity.Movie;
+import org.camsley.dvdstore.core.repository.IMovieRepository;
 
 import java.util.ArrayList;
 import java.util.List;

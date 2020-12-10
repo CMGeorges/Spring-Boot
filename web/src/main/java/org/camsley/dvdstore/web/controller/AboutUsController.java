@@ -1,4 +1,4 @@
-package org.camsley.dvdstore.controller;
+package org.camsley.dvdstore.web.controller;
 
 
 import org.springframework.stereotype.Controller;

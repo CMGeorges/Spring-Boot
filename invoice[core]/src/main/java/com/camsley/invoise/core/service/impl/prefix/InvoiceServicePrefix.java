@@ -40,6 +40,11 @@ public class InvoiceServicePrefix implements IInvoiceService {
         return invoiceRepository.list();
     }
 
+    @Override
+    public Invoice getInvoiceByNumber(String number) {
+        return invoiceRepository.getById(number);
+    }
+
     public long getLastNumber() {
         return lastNumber;
     }

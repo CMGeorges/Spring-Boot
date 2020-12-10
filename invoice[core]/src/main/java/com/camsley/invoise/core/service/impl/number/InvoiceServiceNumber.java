@@ -28,6 +28,11 @@ private IInvoiceRepository invoiceRepository;
     }
 
     @Override
+    public Invoice getInvoiceByNumber(String number) {
+        return invoiceRepository.getById(number);
+    }
+
+    @Override
     public void createInvoice(Invoice invoice) {
             invoice.setNumber(String.valueOf(++lastNumber));
             this.invoiceRepository.create(invoice);

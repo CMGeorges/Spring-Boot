@@ -23,4 +23,9 @@ public class InvoiceRepositoryMemory implements IInvoiceRepository {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public Invoice getById(String number) {
+        throw new UnsupportedOperationException();
+    }
+
 }

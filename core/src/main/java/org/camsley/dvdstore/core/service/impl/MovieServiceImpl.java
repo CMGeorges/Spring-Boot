@@ -1,8 +1,8 @@
-package org.camsley.dvdstore.service.impl;
+package org.camsley.dvdstore.core.service.impl;
 
-import org.camsley.dvdstore.entity.Movie;
-import org.camsley.dvdstore.repository.IMovieRepository;
-import org.camsley.dvdstore.service.MovieService;
+import org.camsley.dvdstore.core.entity.Movie;
+import org.camsley.dvdstore.core.repository.IMovieRepository;
+import org.camsley.dvdstore.core.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

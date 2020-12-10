@@ -4,8 +4,18 @@ public class Invoice {
 
     private String number;
     private String customerName;
+    private String orderNumber;
+
 
     public Invoice() {
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public String getNumber() {

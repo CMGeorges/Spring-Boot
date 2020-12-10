@@ -1,4 +1,4 @@
-package org.camsley.dvdstore.entity;
+package org.camsley.dvdstore.core.entity;
 
 
 public class Movie {

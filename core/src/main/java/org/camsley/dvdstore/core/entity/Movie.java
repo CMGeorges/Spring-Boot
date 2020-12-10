@@ -3,8 +3,11 @@ package org.camsley.dvdstore.core.entity;
 
 public class Movie {
 
+    private Long id;
     private String title;
     private String genre;
+    private String description;
+
 
     public Movie() {
     }
@@ -28,5 +31,21 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

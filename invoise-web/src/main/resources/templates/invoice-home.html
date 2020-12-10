@@ -9,7 +9,7 @@
 <h2>Actions disponibles : </h2>
 <ul>
     <li>
-        <a href="">Ajout de facture</a>
+        <a href="create-form">Ajout de facture</a>
     </li>
 </ul>
 
@@ -17,7 +17,7 @@
 
     <tr th:each="invoice:${invoices}">
         <td>
-            <a th:href="${invoice.number}" th:text="${invoice.number}"/>
+            <a th:href="@{/invoice/{number}(number=${invoice.number})}" th:text="${invoice.number}"/>
         </td>
         <td th:text="${invoice.customerName}"></td>
     </tr>

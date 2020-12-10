@@ -22,11 +22,11 @@ private IInvoiceService invoiceService;
     }
 
     @Override
-    public void createInvoice() {
+    public String  createInvoice(Invoice invoice) {
         System.out.println("USage of scanner");
-        Invoice invoice = new Invoice();
+         invoice = new Invoice();
         invoice.setCustomerName("Virging Galactic");
         invoiceService.createInvoice(invoice);
-
+    return null;
     }
 }

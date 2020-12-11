@@ -5,11 +5,10 @@ import com.camsley.invoise.core.repository.IInvoiceRepository;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class InvoiceServicePrefix implements IInvoiceService {
 
     @Value("${invoice.lastNumber}")
@@ -62,9 +61,9 @@ public class InvoiceServicePrefix implements IInvoiceService {
     }
 
     @Override
-    public void createInvoice(Invoice invoice) {
-        invoice.setNumber(String.valueOf(prefix+(++lastNumber)));
-        this.invoiceRepository.create(invoice);
+    public Invoice createInvoice(Invoice invoice) {
+        invoiceRepository.create(invoice);
+        return invoice;
     }
 
 }

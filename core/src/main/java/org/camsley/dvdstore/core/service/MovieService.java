@@ -7,7 +7,7 @@ import java.util.List;
 public interface MovieService {
 
 
-     void registerMovie(Movie movie);
+     Movie registerMovie(Movie movie);
      List<Movie> getMovieList();
      Movie getMovieById(long id);
 }

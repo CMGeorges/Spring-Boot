@@ -1,33 +1,30 @@
-package org.camsley.dvdstore.core.entity;
+package org.camsley.dvdstore.web.form;
 
 
-public class Movie {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class MovieForm {
 
     private Long id;
+
+    @NotBlank(message = "Veuillez entrer un titre")
+    @Size(max = 30)
     private String title;
+
+    @NotBlank(message = "Veuillez choisir un genre")
     private String genre;
+
+    @Size(max = 255,message = "Entrez une description de 255 caractères au plus")
     private String description;
 
 
-    public Movie() {
+    public MovieForm() {
     }
 
-    public Movie(String title, String genre) {
+    public MovieForm(String title, String genre) {
         this.genre=genre;
         this.title= title;
-    }
-
-    public Movie(Long id, String title, String genre, String description) {
-        this.id = id;
-        this.title = title;
-        this.genre = genre;
-        this.description = description;
-    }
-
-    public Movie(String title, String genre, String description) {
-        this.title = title;
-        this.genre = genre;
-        this.description = description;
     }
 
     public String getTitle() {
@@ -61,4 +58,5 @@ public class Movie {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

@@ -2,11 +2,11 @@ package org.camsley.dvdstore.web.controller;
 
 import org.camsley.dvdstore.core.entity.Movie;
 import org.camsley.dvdstore.core.service.MovieService;
+import org.camsley.dvdstore.web.form.MovieForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -31,8 +31,8 @@ public class HomeController {
         return movies;
     }
 
-    @GetMapping("add-movie-form")
-    public String displayMovieForm(@ModelAttribute Movie movie){
+    @GetMapping("/add-movie-form")
+    public String displayMovieForm(@ModelAttribute MovieForm movieForm){
 
         return "dvdstore-add-movie-form";
     }

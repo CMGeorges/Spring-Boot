@@ -1,24 +1,19 @@
-package com.camsley.invoise.core.entities;
+package com.camsley.invoise.invoiseweb.form;
 
-public class Invoice {
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class InvoiceForm {
 
     private String number;
+    @NotBlank(message = "Le nom est obligatoire")
     private String customerName;
+    @Size(min=10,max=13)
     private String orderNumber;
 
 
-    public Invoice() {
-    }
-
-    public Invoice(String invoice_number, String customer_name) {
-        this.customerName=customer_name;
-        this.number=invoice_number;
-    }
-
-    public Invoice(String number, String customerName, String orderNumber) {
-        this.number = number;
-        this.customerName = customerName;
-        this.orderNumber = orderNumber;
+    public InvoiceForm() {
     }
 
     public String getOrderNumber() {
@@ -44,4 +39,6 @@ public class Invoice {
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
+
+
 }

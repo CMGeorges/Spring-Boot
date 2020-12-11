@@ -23,8 +23,9 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void registerMovie(Movie movie) {
+    public Movie registerMovie(Movie movie) {
         movieRepository.add(movie);
+        return movie;
     }
 
     @Override

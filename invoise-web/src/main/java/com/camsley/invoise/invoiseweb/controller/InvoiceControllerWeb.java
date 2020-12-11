@@ -1,19 +1,22 @@
 package com.camsley.invoise.invoiseweb.controller;
 
-import com.camsley.invoise.core.controller.IInvoiceController;
 import com.camsley.invoise.core.entities.Invoice;
 import com.camsley.invoise.core.service.IInvoiceService;
+import com.camsley.invoise.invoiseweb.form.InvoiceForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/invoice")
-public class InvoiceControllerWeb implements IInvoiceController {
+public class InvoiceControllerWeb  {
 
     @Autowired
     private IInvoiceService invoiceService;
@@ -22,21 +25,22 @@ public class InvoiceControllerWeb implements IInvoiceController {
         return invoiceService;
     }
 
-    @Override
     public void setInvoiceService(IInvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
 
 
-    @Override
-    @PostMapping("")
-    public String createInvoice(@ModelAttribute Invoice invoice){
+    @PostMapping("/create")
+    public String createInvoice(@Valid @ModelAttribute InvoiceForm invoiceForm, BindingResult result){
 
-        String customerName = "Tesla";
-        invoice= new Invoice();
-        invoice.setCustomerName(customerName);
-        this.invoiceService.createInvoice(invoice);
 
+        if (result.hasErrors()) {
+            return "invoice-create-form";
+        }
+        Invoice invoice= new Invoice();
+        invoice.setCustomerName(invoiceForm.getCustomerName());
+        invoice.setOrderNumber(invoiceForm.getOrderNumber());
+        invoiceService.createInvoice(invoice);
         return "invoice-created";
     }
 
@@ -49,20 +53,20 @@ public class InvoiceControllerWeb implements IInvoiceController {
         return "invoice-home";
     }
 
-    @GetMapping("/{id}")
-    public String displayInvoice(@PathVariable("id") String number, Model model){
-        System.out.println("La méthode displayInvoice is invoke");
-//        List<Invoice>  invoices= invoiceService.getInvoicelist();
-
-        model.addAttribute("invoice",invoiceService.getInvoiceByNumber(number));
-
-        return "invoice-details";
-    }
+//    @GetMapping("/{id}")
+//    public String displayInvoice(@PathVariable("id") String number, Model model){
+//        System.out.println("La méthode displayInvoice is invoke");
+////        List<Invoice>  invoices= invoiceService.getInvoicelist();
+//
+//        model.addAttribute("invoice",invoiceService.getInvoiceByNumber(number));
+//
+//        return "invoice-details";
+//    }
 
 
 
     @GetMapping("/create-form")
-    public String displayInvoiceCreateForm(@ModelAttribute Invoice invoice){
+    public String displayInvoiceCreateForm(@ModelAttribute InvoiceForm invoiceForm){
 
         return "invoice-create-form";
     }

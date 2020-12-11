@@ -13,9 +13,10 @@ public class InvoiceRepositoryMemory implements IInvoiceRepository {
 
 
     @Override
-    public void create(Invoice invoice){
+    public Invoice create(Invoice invoice){
         invoices.add(invoice);
         System.out.println("Invoice added number : "+ invoice.getNumber()+" for "+invoice.getCustomerName() );
+        return invoice;
     }
 
     @Override

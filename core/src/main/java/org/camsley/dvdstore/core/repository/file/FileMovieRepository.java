@@ -3,13 +3,12 @@ package org.camsley.dvdstore.core.repository.file;
 import org.camsley.dvdstore.core.entity.Movie;
 import org.camsley.dvdstore.core.repository.IMovieRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+//@Repository
 public class FileMovieRepository implements IMovieRepository {
 
     @Value("${movies.file.location}")
@@ -24,20 +23,22 @@ public class FileMovieRepository implements IMovieRepository {
     }
 
     @Override
-    public void add(Movie movie){
+    public Movie add(Movie movie){
         FileWriter writer;
         try{
 
             writer=new FileWriter(file,true);
             long lastId=list().stream().map(Movie::getId).max(Long::compare).orElse(0L);
             movie.setId(lastId+1);
-            writer.write("\n"+movie.getId()+";"+movie.getTitle()+";"+movie.getGenre()+";"+movie.getDescription()+"\n");
+            writer.write(movie.getId()+";"+movie.getTitle()+";"+movie.getGenre()+";"+movie.getDescription()+"\n");
             writer.close();
+
         }
         catch (IOException e){
             e.printStackTrace();
         }
         System.out.println("The movie "+movie.getTitle()+" has been saved.");
+        return movie;
     }
 
     @Override
@@ -53,8 +54,6 @@ public class FileMovieRepository implements IMovieRepository {
                 movie.setGenre(titreEtGenre[2]);
                 movies.add(movie);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,8 +76,6 @@ public class FileMovieRepository implements IMovieRepository {
                     return movie;
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NumberFormatException e) {

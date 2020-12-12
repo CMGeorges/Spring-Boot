@@ -1,41 +1,42 @@
 package com.camsley.invoise.core.service.impl.number;
 
 import com.camsley.invoise.core.entities.Invoice;
-import com.camsley.invoise.core.repository.IInvoiceRepository;
+import com.camsley.invoise.core.repository.InvoiceRepositoryInterface;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
 public class InvoiceServiceNumber implements IInvoiceService {
 
+    @Qualifier("invoiceRepositoryInterface")
     @Autowired
-private IInvoiceRepository invoiceRepository;
+    private  InvoiceRepositoryInterface invoiceRepository;
 
 
-    public IInvoiceRepository getInvoiceRepository() {
+
+    public InvoiceRepositoryInterface getInvoiceRepository() {
         return invoiceRepository;
     }
 
-    public void setInvoiceRepository(IInvoiceRepository invoiceRepository) {
-        this.invoiceRepository = invoiceRepository;
+    public void setInvoiceRepository(InvoiceRepositoryInterface invoiceRepository) {
+        invoiceRepository = invoiceRepository;
     }
 
     @Override
-    public List<Invoice> getInvoicelist() {
-        return invoiceRepository.list();
+    public Iterable<Invoice> getInvoicelist() {
+        return invoiceRepository.findAll();
     }
 
     @Override
     public Invoice getInvoiceByNumber(String number) {
-        return invoiceRepository.getById(number);
+        return invoiceRepository.findById(number).orElseThrow(NullPointerException::new);
     }
 
     @Override
     public Invoice createInvoice(Invoice invoice) {
-           return invoiceRepository.create(invoice);
+           return invoiceRepository.save(invoice);
     }
 }

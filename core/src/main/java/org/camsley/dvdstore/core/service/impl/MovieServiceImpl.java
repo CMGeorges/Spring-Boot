@@ -6,8 +6,6 @@ import org.camsley.dvdstore.core.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class MovieServiceImpl implements MovieService {
 
@@ -24,17 +22,17 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie registerMovie(Movie movie) {
-        movieRepository.add(movie);
+        movieRepository.save(movie);
         return movie;
     }
 
     @Override
-    public List<Movie> getMovieList() {
-        return movieRepository.list();
+    public Iterable<Movie> getMovieList() {
+        return movieRepository.findAll();
     }
 
     @Override
-    public Movie getMovieById(long id) {
-        return movieRepository.getById(id);
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id).orElseThrow();
     }
 }

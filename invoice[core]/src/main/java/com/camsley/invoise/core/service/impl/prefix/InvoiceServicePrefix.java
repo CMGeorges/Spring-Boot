@@ -1,12 +1,12 @@
 package com.camsley.invoise.core.service.impl.prefix;
 
 import com.camsley.invoise.core.entities.Invoice;
-import com.camsley.invoise.core.repository.IInvoiceRepository;
+import com.camsley.invoise.core.repository.InvoiceRepositoryInterface;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.util.List;
+import java.util.NoSuchElementException;
 
 //@Service
 public class InvoiceServicePrefix implements IInvoiceService {
@@ -19,29 +19,29 @@ public class InvoiceServicePrefix implements IInvoiceService {
 
 
     @Autowired
-    private IInvoiceRepository invoiceRepository;
+    private InvoiceRepositoryInterface invoiceRepository;
 
     public InvoiceServicePrefix() {
     }
 
-    public IInvoiceRepository getInvoiceRepository() {
+    public InvoiceRepositoryInterface getInvoiceRepository() {
         return invoiceRepository;
     }
 
 
 
-    public void setInvoiceRepository(IInvoiceRepository invoiceRepository) {
+    public void setInvoiceRepository(InvoiceRepositoryInterface invoiceRepository) {
         this.invoiceRepository = invoiceRepository;
     }
 
     @Override
-    public List<Invoice> getInvoicelist() {
-        return invoiceRepository.list();
+    public Iterable<Invoice> getInvoicelist() {
+        return invoiceRepository.findAll();
     }
 
     @Override
     public Invoice getInvoiceByNumber(String number) {
-        return invoiceRepository.getById(number);
+        return invoiceRepository.findById(number).orElseThrow(NoSuchElementException::new);
     }
 
     public long getLastNumber() {
@@ -62,7 +62,8 @@ public class InvoiceServicePrefix implements IInvoiceService {
 
     @Override
     public Invoice createInvoice(Invoice invoice) {
-        invoiceRepository.create(invoice);
+        invoice.setNumber(prefix+(++lastNumber));
+        invoiceRepository.save(invoice);
         return invoice;
     }
 

@@ -1,13 +1,12 @@
 package org.camsley.dvdstore.core.repository;
 
 import org.camsley.dvdstore.core.entity.Movie;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+public interface IMovieRepository extends CrudRepository<Movie,Long> {
 
-public interface IMovieRepository {
-
-    Movie add(Movie movie);
-    List<Movie> list();
-    Movie getById(long id);
+//    Movie add(Movie movie);
+//    List<Movie> list();
+//    Movie getById(long id);
 
 }

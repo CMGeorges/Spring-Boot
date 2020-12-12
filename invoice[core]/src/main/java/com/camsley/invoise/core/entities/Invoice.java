@@ -1,7 +1,16 @@
 package com.camsley.invoise.core.entities;
 
-public class Invoice {
 
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+@Entity
+public class Invoice implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="INVOICE_NUMBER")
     private String number;
     private String customerName;
     private String orderNumber;

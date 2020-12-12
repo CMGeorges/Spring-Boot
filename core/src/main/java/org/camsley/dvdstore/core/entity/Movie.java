@@ -1,8 +1,11 @@
 package org.camsley.dvdstore.core.entity;
 
 
+import org.springframework.data.annotation.Id;
+
 public class Movie {
 
+    @Id
     private Long id;
     private String title;
     private String genre;
@@ -17,6 +20,18 @@ public class Movie {
         this.title= title;
     }
 
+    public Movie(String title, String genre, String description) {
+        this.title = title;
+        this.genre = genre;
+        this.description = description;
+    }
+
+    public Movie(Long id, String title, String genre) {
+        this.id = id;
+        this.title = title;
+        this.genre = genre;
+    }
+
     public Movie(Long id, String title, String genre, String description) {
         this.id = id;
         this.title = title;
@@ -24,11 +39,7 @@ public class Movie {
         this.description = description;
     }
 
-    public Movie(String title, String genre, String description) {
-        this.title = title;
-        this.genre = genre;
-        this.description = description;
-    }
+
 
     public String getTitle() {
         return title;

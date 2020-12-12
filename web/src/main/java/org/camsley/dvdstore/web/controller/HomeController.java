@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.List;
-
 @Controller
 public class HomeController {
 
@@ -25,8 +23,8 @@ public class HomeController {
     }
 
     @GetMapping("/dvdstore-home")
-    public @ModelAttribute("movies")List<Movie> displayHome(){
-        List<Movie> movies = movieService.getMovieList();
+    public @ModelAttribute("movies")Iterable<Movie> displayHome(){
+        Iterable<Movie> movies = movieService.getMovieList();
 
         return movies;
     }

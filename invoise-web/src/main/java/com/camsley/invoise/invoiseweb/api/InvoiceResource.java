@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/invoice")
 public class InvoiceResource {
@@ -32,7 +30,7 @@ public class InvoiceResource {
     }
 
     @GetMapping
-    public List<Invoice> list(){
+    public Iterable<Invoice> list(){
         System.out.println("La méthode display home is invoke");
 
         return invoiceService.getInvoicelist();

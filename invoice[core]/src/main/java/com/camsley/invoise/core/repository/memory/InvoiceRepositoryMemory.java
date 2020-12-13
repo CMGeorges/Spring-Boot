@@ -16,17 +16,17 @@ public class InvoiceRepositoryMemory implements InvoiceRepositoryInterface {
     @Override
     public Invoice save(Invoice invoice){
         invoices.add(invoice);
-        System.out.println("Invoice added number : "+ invoice.getNumber()+" for "+invoice.getCustomerName() );
+        System.out.println("Invoice added number : "+ invoice.getNumber()+" for "+invoice.getCustomer().getName() );
         return invoice;
     }
 
     @Override
-    public Iterable<Invoice> findAll() {
+    public List<Invoice> findAll() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Iterable<Invoice> findAllById(Iterable<String> iterable) {
+    public List<Invoice> findAllById(Iterable<String> iterable) {
         throw new UnsupportedOperationException();    }
 
     @Override
@@ -55,7 +55,7 @@ public class InvoiceRepositoryMemory implements InvoiceRepositoryInterface {
     }
 
     @Override
-    public <S extends Invoice> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends Invoice> List<S> saveAll(Iterable<S> iterable) {
         throw new UnsupportedOperationException();
     }
 

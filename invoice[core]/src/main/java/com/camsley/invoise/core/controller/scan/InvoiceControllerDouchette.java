@@ -1,6 +1,7 @@
 package com.camsley.invoise.core.controller.scan;
 
 import com.camsley.invoise.core.controller.IInvoiceController;
+import com.camsley.invoise.core.entities.Customer;
 import com.camsley.invoise.core.entities.Invoice;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ private IInvoiceService invoiceService;
     public String  createInvoice(Invoice invoice) {
         System.out.println("USage of scanner");
          invoice = new Invoice();
-        invoice.setCustomerName("Virging Galactic");
+        Customer customer = new Customer("Virging Galactic");
+        invoice.setCustomer(customer);
         invoiceService.createInvoice(invoice);
     return null;
     }

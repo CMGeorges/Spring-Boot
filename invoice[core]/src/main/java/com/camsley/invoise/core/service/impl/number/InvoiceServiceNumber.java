@@ -4,14 +4,12 @@ import com.camsley.invoise.core.entities.Invoice;
 import com.camsley.invoise.core.repository.InvoiceRepositoryInterface;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class InvoiceServiceNumber implements IInvoiceService {
 
-    @Qualifier("invoiceRepositoryInterface")
     @Autowired
     private  InvoiceRepositoryInterface invoiceRepository;
 

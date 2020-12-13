@@ -1,6 +1,7 @@
 package com.camsley.invoise.core.controller.keyboard;
 
 import com.camsley.invoise.core.controller.IInvoiceController;
+import com.camsley.invoise.core.entities.Customer;
 import com.camsley.invoise.core.entities.Invoice;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class InvoiceControllerKeyboard implements IInvoiceController {
         Scanner sc = new Scanner(System.in);
         String customerName = sc.nextLine();
          invoice= new Invoice();
-        invoice.setCustomerName(customerName);
+        Customer customer = new Customer(customerName);
+        invoice.setCustomer(customer);
 
 
         invoiceService.createInvoice(invoice);

@@ -30,7 +30,7 @@ public class MemoryMovieRepository implements IMovieRepository {
 
     @Override
     public boolean existsById(Long aLong) {
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     @Override

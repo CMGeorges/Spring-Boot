@@ -61,8 +61,6 @@ public class InvoiceResource {
 
         final Flux<Invoice>invoiceFlux=Flux.concat(monoList);
        return invoiceFlux.parallel().runOn(Schedulers.elastic());
-
-//         return invoices;
     }
 
 

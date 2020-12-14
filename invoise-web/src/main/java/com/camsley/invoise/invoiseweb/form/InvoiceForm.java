@@ -11,6 +11,11 @@ public class InvoiceForm {
     private String customerName;
     @Size(min=10,max=13)
     private String orderNumber;
+    private String streetName;
+    private String streetNumber;
+    private String zipcode;
+    private String city;
+    private String country;
 
 
     public InvoiceForm() {
@@ -40,5 +45,43 @@ public class InvoiceForm {
         this.customerName = customerName;
     }
 
+    public String getStreetName() {
+        return streetName;
+    }
 
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }

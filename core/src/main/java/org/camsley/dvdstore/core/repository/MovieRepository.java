@@ -1,4 +1,4 @@
-//package org.camsley.dvdstore.core.repository;
+package org.camsley.dvdstore.core.repository;
 //
 //import org.camsley.dvdstore.core.entity.Movie;
 //import org.springframework.beans.factory.annotation.Autowired;

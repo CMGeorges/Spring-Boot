@@ -1,6 +1,7 @@
 package com.camsley.invoise.core.service.impl.number;
 
 import com.camsley.invoise.core.entities.Invoice;
+import com.camsley.invoise.core.repository.CustomerRepositoryInterface;
 import com.camsley.invoise.core.repository.InvoiceRepositoryInterface;
 import com.camsley.invoise.core.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ public class InvoiceServiceNumber implements IInvoiceService {
     @Autowired
     private  InvoiceRepositoryInterface invoiceRepository;
 
-
+    @Autowired
+    private CustomerRepositoryInterface customerRepositoryInterface;
 
     public InvoiceRepositoryInterface getInvoiceRepository() {
         return invoiceRepository;
@@ -35,6 +37,7 @@ public class InvoiceServiceNumber implements IInvoiceService {
 
     @Override
     public Invoice createInvoice(Invoice invoice) {
-           return invoiceRepository.save(invoice);
+        customerRepositoryInterface.save(invoice.getCustomer());
+        return invoiceRepository.save(invoice);
     }
 }

@@ -15,7 +15,7 @@ public class MemoryMovieRepository implements IMovieRepository {
 
     @Override
     public Movie save(Movie movie){
-        movie.setId(++lastNumber);
+        movie.setId(lastNumber++);
         movies.add(movie);
         System.out.println("The movie "+movie.getTitle()+" has been added.");
         return movie;

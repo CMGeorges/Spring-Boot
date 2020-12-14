@@ -1,5 +1,6 @@
 package com.camsley.invoise.invoiseweb.controller;
 
+import com.camsley.invoise.core.entities.Address;
 import com.camsley.invoise.core.entities.Customer;
 import com.camsley.invoise.core.entities.Invoice;
 import com.camsley.invoise.core.service.IInvoiceService;
@@ -41,7 +42,9 @@ public class InvoiceControllerWeb  {
         Invoice invoice= new Invoice();
         Customer customer = new Customer(invoiceForm.getCustomerName());
         invoice.setCustomer(customer);
-        invoice.setOrderNumber(invoiceForm.getOrderNumber());
+        Address address= new Address(invoiceForm.getStreetName(),invoiceForm.getStreetNumber(),invoiceForm.getCity(),invoiceForm.getZipcode(),invoiceForm.getCountry());
+        customer.setAddress(address);
+//        invoice.setOrderNumber(invoiceForm.getOrderNumber());
         invoiceService.createInvoice(invoice);
         return "invoice-created";
     }

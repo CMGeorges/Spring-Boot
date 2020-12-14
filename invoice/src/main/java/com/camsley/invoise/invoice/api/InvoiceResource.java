@@ -5,11 +5,11 @@ import com.camsley.invoise.core.entities.customer.Customer;
 import com.camsley.invoise.core.entities.invoice.Invoice;
 import com.camsley.invoise.invoice.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -23,6 +23,7 @@ import java.util.List;
 @RequestMapping("/invoice")
 public class InvoiceResource {
 
+    @Qualifier("IInvoiceService")
     @Autowired
     private IInvoiceService invoiceService;
 
@@ -102,11 +103,11 @@ public IInvoiceService getInvoiceService() {
     }
 
 
-    public RestTemplate getRestTemplate() {
-        return restTemplate;
+    public WebClient.Builder getWebClientBuilder() {
+        return webClientBuilder;
     }
 
-    public void setRestTemplate(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public void setWebClientBuilder(WebClient.Builder webClientBuilder) {
+        this.webClientBuilder = webClientBuilder;
     }
 }

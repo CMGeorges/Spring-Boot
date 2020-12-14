@@ -1,7 +1,7 @@
 package com.camsley.invoise.invoiseweb.api;
 
-import com.camsley.invoise.core.entities.Invoice;
-import com.camsley.invoise.core.service.IInvoiceService;
+import com.camsley.invoise.core.entities.invoice.Invoice;
+import com.camsley.invoise.invoice.service.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,12 @@
 package org.camsley.dvdstore.web.controller;
 
+import org.camsley.dvdstore.core.entity.Actor;
 import org.camsley.dvdstore.core.entity.Movie;
 import org.camsley.dvdstore.core.service.MovieService;
 import org.camsley.dvdstore.web.form.MovieForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +36,7 @@ public class MovieController {
 //    }
 
     @PostMapping("/add")
+    @Transactional
     public String addMovie(@Valid @ModelAttribute MovieForm movieForm, BindingResult results){
 
         if (results.hasErrors() ) {
@@ -43,6 +46,8 @@ public class MovieController {
         Movie movie = new Movie();
         movie.setTitle(movieForm.getTitle());
         movie.setGenre(movieForm.getGenre());
+        Actor actor = new Actor(movieForm.getFirstName(),movieForm.getName());
+        movie.setMainActor(actor);
         movie.setDescription(movieForm.getDescription());
 
             movieService.registerMovie(movie);
